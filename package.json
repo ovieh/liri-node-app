@@ -7,5 +7,19 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Ovieh Mosley",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "node-spotify-api": "^1.0.7",
+    "request": "^2.83.0",
+    "twitter": "^1.7.1"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ovieh/Liri.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ovieh/Liri/issues"
+  },
+  "homepage": "https://github.com/ovieh/Liri#readme"
 }
