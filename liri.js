@@ -4,7 +4,18 @@ const request = require('request');
 // console.log(getKeys);
 
 let choice = process.argv[2];
-let input = process.argv[3];
+
+let input = "";
+
+const nodeArgs = process.argv;
+
+for (let i = 3; i < nodeArgs.length; i++) {
+    if (i > 3 && i < nodeArgs.length) {
+        input = input + "+" + nodeArgs[i];
+    } else {
+        input += nodeArgs[i];
+    }
+}
 
 
 const getTweets = () => {
@@ -49,35 +60,31 @@ const getSpotify = (title) => {
         artists.forEach(artist => {
             artistArray.push(artist.name);
         }, this);
-
-        console.log(artistArray.join(', '));
-
-        // //prints song title
-        console.log(data.tracks.items[0].name);
-
-        // //prints URL
-        console.log(data.tracks.items[0].album.external_urls.spotify);
-
-        // //prints album
-        console.log(data.tracks.items[0].album.name);
-
+        //Clean this up sometime in the future
+        console.log(
+            `\nArtist(s): ${artistArray.join(', ')} \nSong Title: ${data.tracks.items[0].name}\nURL: ${data.tracks.items[0].album.external_urls.spotify}\nAlbum: ${data.tracks.items[0].album.name}`
+        );
 
 
     });
 };
 
 const getMovie = () => {
+    const request = require('request');
 
 }
+
 switch (choice) {
     case "my-tweets":
         getTweets();
         break;
     case "spotify-this-song":
-        if (typeof input === "undefined") {
-            getSpotify("The Sign Ace of Base");
-        } else
+        if (typeof process.argv[3] !== "undefined") {          
             getSpotify(input);
+        }
+        else { 
+            getSpotify("The Sign Ace of Base");                  
+        }
         break;
 
     case "movie-this":
