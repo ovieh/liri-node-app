@@ -39,11 +39,14 @@ const getSpotify = (title) => {
         if (err) {
             return console.log('Error occurred: ' + err);
         }
-        // console.log(JSON.stringify(data));
-        //console.log(data.tracks.items[0].album.artists.name);
+        //Prints artists
+        const artists = data.tracks.items[0].album.artists;
+        let artistArray = [];
+        artists.forEach(artist => {
+            artistArray.push(artist.name);
+        }, this);
 
-        //prints artist(s)
-        console.log(data.tracks.items[0].album.artists[0].name);
+        console.log(artistArray.join(', '));
 
         // //prints song title
         console.log(data.tracks.items[0].name);
@@ -54,13 +57,6 @@ const getSpotify = (title) => {
         // //prints album
         console.log(data.tracks.items[0].album.name);
 
-        const artists = data.tracks.items[0].album.artists;
-        let artistArray = [];
-        artists.forEach(artist => {
-            artistArray.push(artist.name);
-        }, this);
-
-        console.log(artistArray.join(', '));
 
     });
 };
