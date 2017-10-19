@@ -9,16 +9,20 @@ let input = process.argv[3];
 
 const getTweets = () => {
     const Twitter = require('twitter');
-
-
+    const moment = require('moment');
     const client = new Twitter(getKeys.twitterKeys);
 
     const params = {
-        screen_name: 'fauxvieh'
+        screen_name: 'fauxvieh',
+        count: 20
     };
     client.get('statuses/user_timeline', params, (error, tweets, response) => {
         if (!error) {
-            console.log(tweets);
+
+            tweets.map(element => {
+                console.log(`${element.text} --${moment(element.created_at, 'ddd MMM DD HH:mm:ss ZZ YYYY').format('dddd, MMMM Do YYYY, h:mm:ss a')}`);
+            });
+
         }
     });
 }
