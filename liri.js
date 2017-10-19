@@ -1,5 +1,4 @@
 const getKeys = require('./keys.js');
-const request = require('request');
 
 // console.log(getKeys);
 
@@ -38,13 +37,16 @@ const getTweets = () => {
     });
 }
 
+// Good effort
+// const join = (arr) => {
+//     let joinedArray = [];
+//     arr.forEach( element => joinedArray.push(element.subElement) );
+//     return joinedArray;
+// };
+
 const getSpotify = (title) => {
     const Spotify = require('node-spotify-api');
     const spotify = new Spotify(getKeys.spotifyKeys);
-
-    if (typeof title === 'undefined') {
-
-    }
 
     spotify.search({
         type: 'track',
@@ -69,26 +71,46 @@ const getSpotify = (title) => {
     });
 };
 
-const getMovie = () => {
+const getMovie = (input) => {
     const request = require('request');
 
+    const queryURL = "http://www.omdbapi.com/?t=" + input + "&y=&plot=short&apikey=40e9cece";
+    console.log(queryURL);
+
+    request(queryURL, (error, response, body) => {
+        if (!error && response.statusCode === 200) {
+            console.log("Title: " + JSON.parse(body).Title);
+            console.log("Release Year: " + JSON.parse(body).Year);
+            console.log("IMDB Rating: " + JSON.parse(body).Ratings[0].Value);
+            console.log("Rotten Tomatoes Rating: " + JSON.parse(body).Ratings[1].Value);
+            console.log("Production Country(s): " + JSON.parse(body).Country);
+
+            console.log("Language: " + JSON.parse(body).Language);
+            console.log("Plot: " + JSON.parse(body).Plot);
+            console.log("Actors: " + JSON.parse(body).Actors);          
+        }
+    });
 }
+
 
 switch (choice) {
     case "my-tweets":
         getTweets();
         break;
     case "spotify-this-song":
-        if (typeof process.argv[3] !== "undefined") {          
+        if (typeof process.argv[3] !== "undefined") {
             getSpotify(input);
-        }
-        else { 
-            getSpotify("The Sign Ace of Base");                  
+        } else {
+            getSpotify("The Sign Ace of Base");
         }
         break;
 
     case "movie-this":
-        getMovie(input);
+        if (typeof process.argv[3] !== "undefined") {
+            getMovie(input);
+        } else {
+            getMovie("Mr. Nobody");
+        }
         break;
     case "do-what-it-says":
         console.log(input);
