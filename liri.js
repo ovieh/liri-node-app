@@ -31,26 +31,36 @@ const getSpotify = (title) => {
     const Spotify = require('node-spotify-api');
     const spotify = new Spotify(getKeys.spotifyKeys);
 
-    spotify.search({type: 'track', query: title, limit: 1}, (err, data) => {
+    spotify.search({
+        type: 'track',
+        query: title,
+        limit: 1
+    }, (err, data) => {
         if (err) {
             return console.log('Error occurred: ' + err);
         }
         // console.log(JSON.stringify(data));
         //console.log(data.tracks.items[0].album.artists.name);
 
-        //prints artist
+        //prints artist(s)
         console.log(data.tracks.items[0].album.artists[0].name);
-        
-        //prints song title
+
+        // //prints song title
         console.log(data.tracks.items[0].name);
 
-        //prints URL
+        // //prints URL
         console.log(data.tracks.items[0].album.external_urls.spotify);
 
-        //prints album
+        // //prints album
         console.log(data.tracks.items[0].album.name);
 
+        const artists = data.tracks.items[0].album.artists;
+        let artistArray = [];
+        artists.forEach(artist => {
+            artistArray.push(artist.name);
+        }, this);
 
+        console.log(artistArray.join(', '));
 
     });
 };
