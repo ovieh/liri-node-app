@@ -31,6 +31,10 @@ const getSpotify = (title) => {
     const Spotify = require('node-spotify-api');
     const spotify = new Spotify(getKeys.spotifyKeys);
 
+    if (typeof title === 'undefined') {
+
+    }
+
     spotify.search({
         type: 'track',
         query: title,
@@ -58,6 +62,7 @@ const getSpotify = (title) => {
         console.log(data.tracks.items[0].album.name);
 
 
+
     });
 };
 
@@ -69,8 +74,12 @@ switch (choice) {
         getTweets();
         break;
     case "spotify-this-song":
-        getSpotify(input);
+        if (typeof input === "undefined") {
+            getSpotify("The Sign Ace of Base");
+        } else
+            getSpotify(input);
         break;
+
     case "movie-this":
         getMovie(input);
         break;
