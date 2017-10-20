@@ -87,7 +87,31 @@ const getMovie = (input) => {
 
             console.log("Language: " + JSON.parse(body).Language);
             console.log("Plot: " + JSON.parse(body).Plot);
-            console.log("Actors: " + JSON.parse(body).Actors);          
+            console.log("Actors: " + JSON.parse(body).Actors);
+        }
+    });
+}
+
+const getText = () => {
+    var fs = require('fs');
+
+    fs.readFile('random.txt', 'utf-8', (error, data) => {
+        if (error) {
+            return console.log(error);
+        }
+
+        const joinedCommand = data.split(",");
+
+        //This doesn't seem DRY to me. *shrugs*
+        switch (joinedCommand[0]) {
+            case "spotify-this-song":
+                getSpotify(joinedCommand[1]);
+                break;
+            case "movie-this":
+                getMovie(joinedCommand[1]);
+                break;
+            default:
+                console.log("invalid text file");
         }
     });
 }
@@ -113,7 +137,7 @@ switch (choice) {
         }
         break;
     case "do-what-it-says":
-        console.log(input);
+        getText();
         break;
     default:
         console.log("Invalid user input");
