@@ -73,13 +73,22 @@
 
         const queryURL = "http://www.omdbapi.com/?t=" + input + "&y=&plot=short&apikey=40e9cece";
         console.log(queryURL);
+        let rottenScore = "No score";
+        let imdbScore = "No Score";
 
         request(queryURL, (error, response, body) => {
             if (!error && response.statusCode === 200) {
+                if (typeof JSON.parse(body).Ratings[1] !== 'undefined') {
+                    rottenScore = JSON.parse(body).Ratings[1].Value;
+                }
+                if (typeof JSON.parse(body).Ratings[0] !== 'undefined') {
+                    imdbScore = JSON.parse(body).Ratings[0].Value;
+                }
+
                 console.log("Title: " + JSON.parse(body).Title);
                 console.log("Release Year: " + JSON.parse(body).Year);
-                console.log("IMDB Rating: " + JSON.parse(body).Ratings[0].Value);
-                console.log("Rotten Tomatoes Rating: " + JSON.parse(body).Ratings[1].Value);
+                console.log("IMDB Rating: " + imdbScore);
+                console.log("Rotten Tomatoes Rating: " + rottenScore);
                 console.log("Production Country(s): " + JSON.parse(body).Country);
 
                 console.log("Language: " + JSON.parse(body).Language);
