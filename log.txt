@@ -1,0 +1,12 @@
+
+spotify-this-song
+Artist(s): Prince 
+Song Title: Do Me, Baby
+URL: https://open.spotify.com/album/68qpubhEKJPAKgWarrqfoA
+Album: Controversy
+
+spotify-this-song
+Artist(s): Malcolm-Jamal Warner's Miles Long 
+Song Title: If I Were Your Girlfriend
+URL: https://open.spotify.com/album/2No7MeTlWYb4haJ2I78g5H
+Album: Love & Other Social Issues

@@ -1,5 +1,7 @@
 (() => {
     const getKeys = require('./keys.js');
+    const fs = require('fs');
+    
 
     const choice = process.argv[2];
     let input = "";
@@ -44,7 +46,7 @@
     const getSpotify = (title) => {
         const Spotify = require('node-spotify-api');
         const spotify = new Spotify(getKeys.spotifyKeys);
-
+        const command = 'spotify-this-song';
         spotify.search({
             type: 'track',
             query: title,
@@ -60,10 +62,10 @@
                 artistArray.push(artist.name);
             }, this);
             //Clean this up sometime in the future
-            console.log(
-                `\nArtist(s): ${artistArray.join(', ')} \nSong Title: ${data.tracks.items[0].name}\nURL: ${data.tracks.items[0].album.external_urls.spotify}\nAlbum: ${data.tracks.items[0].album.name}`
-            );
 
+            let output = `Artist(s): ${artistArray.join(', ')} \nSong Title: ${data.tracks.items[0].name}\nURL: ${data.tracks.items[0].album.external_urls.spotify}\nAlbum: ${data.tracks.items[0].album.name}\n`;
+            console.log(command, output);
+            log(command, output);
 
         });
     };
@@ -84,7 +86,8 @@
                 if (typeof JSON.parse(body).Ratings[0] !== 'undefined') {
                     imdbScore = JSON.parse(body).Ratings[0].Value;
                 }
-
+                // Refactor this to one string
+                let output = null;
                 console.log("Title: " + JSON.parse(body).Title);
                 console.log("Release Year: " + JSON.parse(body).Year);
                 console.log("IMDB Rating: " + imdbScore);
@@ -99,7 +102,6 @@
     }
 
     const getText = () => {
-        var fs = require('fs');
 
         fs.readFile('random.txt', 'utf-8', (error, data) => {
             if (error) {
@@ -121,7 +123,16 @@
             }
         });
     }
+    
+    const log = (command, result) => {
 
+        const entry = "\n" + command + "\n" + result;
+
+        fs.appendFile('log.txt', entry, err =>{
+            if (err) throw err;
+
+        });
+    }
 
     switch (choice) {
         case "my-tweets":

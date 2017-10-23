@@ -9,6 +9,7 @@
   "author": "Ovieh Mosley",
   "license": "MIT",
   "dependencies": {
+    "inquire": "^0.4.8",
     "node-spotify-api": "^1.0.7",
     "request": "^2.83.0",
     "twitter": "^1.7.1"
