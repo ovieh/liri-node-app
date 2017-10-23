@@ -1,38 +1,33 @@
 
-spotify-this-song
-Artist(s): Prince 
-Song Title: Do Me, Baby
-URL: https://open.spotify.com/album/68qpubhEKJPAKgWarrqfoA
-Album: Controversy
+movie-this
+Title: Eraserhead
+Release Year: 1977
+Release Year: 1977
+IMDB Rating: 7.4/10
+Rotten Tomatoes Rating: 91%
+Production Country(s): USA
+Language: English
+Plot: Henry Spencer tries to survive his industrial environment, his angry girlfriend, and the unbearable screams of his newly born mutant child.
+"Actors: Jack Nance, Charlotte Stewart, Allen Joseph, Jeanne Bates
 
-spotify-this-song
-Artist(s): Malcolm-Jamal Warner's Miles Long 
-Song Title: If I Were Your Girlfriend
-URL: https://open.spotify.com/album/2No7MeTlWYb4haJ2I78g5H
-Album: Love & Other Social Issues
+movie-this
+Title: Lost Highway
+Release Year: 1997
+Release Year: 1997
+IMDB Rating: 7.6/10
+Rotten Tomatoes Rating: 60%
+Production Country(s): France, USA
+Language: English
+Plot: After a bizarre encounter at a party, a jazz saxophonist is framed for the murder of his wife and sent to prison, where he inexplicably morphs into a young mechanic and begins leading a new life.
+"Actors: Bill Pullman, Patricia Arquette, John Roselius, Louis Eppolito
 
-spotify-this-song
-Artist(s): Prince 
-Song Title: Soft and Wet
-URL: https://open.spotify.com/album/5kbRcoeBHpJHe37a9agmfv
-Album: For You
-
-my-tweets
-I wonder what was wrong with that date! --Thursday, October 19th 2017, 1:50:55 pm
-my-tweets
-This is more useless text! The quick brown fox, jumped over the lazy dog. --Wednesday, October 18th 2017, 6:13:20 pm
-my-tweets
-What's up with this invalid date? --Thursday, October 19th 2017, 1:41:37 pm
-my-tweets
-I just deleted a tweet! Lets see if I still get an Invalid data error! --Thursday, October 19th 2017, 1:50:07 pm
-my-tweets
-I wonder what was wrong with that date! --Thursday, October 19th 2017, 1:50:55 pm
-I just deleted a tweet! Lets see if I still get an Invalid data error! --Thursday, October 19th 2017, 1:50:07 pm
-What's up with this invalid date? --Thursday, October 19th 2017, 1:41:37 pm
-This is more useless text! The quick brown fox, jumped over the lazy dog. --Wednesday, October 18th 2017, 6:13:20 pm
-
-my-tweets
-I wonder what was wrong with that date! --Thursday, October 19th 2017, 1:50:55 pm
-I just deleted a tweet! Lets see if I still get an Invalid data error! --Thursday, October 19th 2017, 1:50:07 pm
-What's up with this invalid date? --Thursday, October 19th 2017, 1:41:37 pm
-This is more useless text! The quick brown fox, jumped over the lazy dog. --Wednesday, October 18th 2017, 6:13:20 pm
+movie-this
+Title: The Ghost Busters
+Release Year: 1975
+Release Year: 1975
+IMDB Rating: 7.6/10
+Rotten Tomatoes Rating: No score
+Production Country(s): USA
+Language: English
+Plot: Two guys and their pet gorilla hunt spooks.
+"Actors: Forrest Tucker, Larry Storch, Bob Burns

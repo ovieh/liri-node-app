@@ -29,7 +29,8 @@
             if (!error) {
 
                 tweets.map(element => {
-                    let entry = `${element.text} --${moment(element.created_at, 'ddd MMM DD HH:mm:ss ZZ YYYY').format('dddd, MMMM Do YYYY, h:mm:ss a')}\n`;
+                    let entry = `${element.text} --${moment(element.created_at, 'ddd MMM DD HH:mm:ss ZZ YYYY')
+                        .format('dddd, MMMM Do YYYY, h:mm:ss a')}\n`;
                     appendEntry = appendEntry.concat(entry);
 
                 });
@@ -79,7 +80,7 @@
         const request = require('request');
 
         const queryURL = "http://www.omdbapi.com/?t=" + input + "&y=&plot=short&apikey=40e9cece";
-        console.log(queryURL);
+        // console.log(queryURL);s
         let rottenScore = "No score";
         let imdbScore = "No Score";
 
@@ -92,16 +93,18 @@
                     imdbScore = JSON.parse(body).Ratings[0].Value;
                 }
                 // Refactor this to one string
-                let output = null;
-                console.log("Title: " + JSON.parse(body).Title);
-                console.log("Release Year: " + JSON.parse(body).Year);
-                console.log("IMDB Rating: " + imdbScore);
-                console.log("Rotten Tomatoes Rating: " + rottenScore);
-                console.log("Production Country(s): " + JSON.parse(body).Country);
+                let movie = `Title: ${JSON.parse(body).Title}
+Release Year: ${JSON.parse(body).Year}
+Release Year: ${JSON.parse(body).Year}
+IMDB Rating: ${imdbScore}
+Rotten Tomatoes Rating: ${rottenScore}
+Production Country(s): ${JSON.parse(body).Country}
+Language: ${JSON.parse(body).Language}
+Plot: ${JSON.parse(body).Plot}
+"Actors: ${JSON.parse(body).Actors}\n`;
 
-                console.log("Language: " + JSON.parse(body).Language);
-                console.log("Plot: " + JSON.parse(body).Plot);
-                console.log("Actors: " + JSON.parse(body).Actors);
+                console.log(movie);
+                log(choice, movie);
             }
         });
     }
