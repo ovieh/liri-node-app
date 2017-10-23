@@ -1,7 +1,7 @@
 (() => {
     const getKeys = require('./keys.js');
     const fs = require('fs');
-    
+
 
     const choice = process.argv[2];
     let input = "";
@@ -20,7 +20,7 @@
         const Twitter = require('twitter');
         const moment = require('moment');
         const client = new Twitter(getKeys.twitterKeys);
-
+        let appendEntry = "";
         const params = {
             screen_name: 'fauxvieh',
             count: 20
@@ -29,11 +29,17 @@
             if (!error) {
 
                 tweets.map(element => {
-                    console.log(`${element.text} --${moment(element.created_at, 'ddd MMM DD HH:mm:ss ZZ YYYY').format('dddd, MMMM Do YYYY, h:mm:ss a')}`);
+                    let entry = `${element.text} --${moment(element.created_at, 'ddd MMM DD HH:mm:ss ZZ YYYY').format('dddd, MMMM Do YYYY, h:mm:ss a')}\n`;
+                    appendEntry = appendEntry.concat(entry);
+
                 });
 
             }
+            log(choice, appendEntry);
+            console.log(appendEntry);
+
         });
+
     }
 
     // Good effort
@@ -46,7 +52,6 @@
     const getSpotify = (title) => {
         const Spotify = require('node-spotify-api');
         const spotify = new Spotify(getKeys.spotifyKeys);
-        const command = 'spotify-this-song';
         spotify.search({
             type: 'track',
             query: title,
@@ -63,9 +68,9 @@
             }, this);
             //Clean this up sometime in the future
 
-            let output = `Artist(s): ${artistArray.join(', ')} \nSong Title: ${data.tracks.items[0].name}\nURL: ${data.tracks.items[0].album.external_urls.spotify}\nAlbum: ${data.tracks.items[0].album.name}\n`;
-            console.log(command, output);
-            log(command, output);
+            let output = `\nArtist(s): ${artistArray.join(', ')} \nSong Title: ${data.tracks.items[0].name}\nURL: ${data.tracks.items[0].album.external_urls.spotify}\nAlbum: ${data.tracks.items[0].album.name}\n`;
+            console.log(choice, output);
+            log(choice, output);
 
         });
     };
@@ -123,12 +128,12 @@
             }
         });
     }
-    
+
     const log = (command, result) => {
 
         const entry = "\n" + command + "\n" + result;
 
-        fs.appendFile('log.txt', entry, err =>{
+        fs.appendFile('log.txt', entry, err => {
             if (err) throw err;
 
         });

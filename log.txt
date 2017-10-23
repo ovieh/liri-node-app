@@ -10,3 +10,29 @@ Artist(s): Malcolm-Jamal Warner's Miles Long
 Song Title: If I Were Your Girlfriend
 URL: https://open.spotify.com/album/2No7MeTlWYb4haJ2I78g5H
 Album: Love & Other Social Issues
+
+spotify-this-song
+Artist(s): Prince 
+Song Title: Soft and Wet
+URL: https://open.spotify.com/album/5kbRcoeBHpJHe37a9agmfv
+Album: For You
+
+my-tweets
+I wonder what was wrong with that date! --Thursday, October 19th 2017, 1:50:55 pm
+my-tweets
+This is more useless text! The quick brown fox, jumped over the lazy dog. --Wednesday, October 18th 2017, 6:13:20 pm
+my-tweets
+What's up with this invalid date? --Thursday, October 19th 2017, 1:41:37 pm
+my-tweets
+I just deleted a tweet! Lets see if I still get an Invalid data error! --Thursday, October 19th 2017, 1:50:07 pm
+my-tweets
+I wonder what was wrong with that date! --Thursday, October 19th 2017, 1:50:55 pm
+I just deleted a tweet! Lets see if I still get an Invalid data error! --Thursday, October 19th 2017, 1:50:07 pm
+What's up with this invalid date? --Thursday, October 19th 2017, 1:41:37 pm
+This is more useless text! The quick brown fox, jumped over the lazy dog. --Wednesday, October 18th 2017, 6:13:20 pm
+
+my-tweets
+I wonder what was wrong with that date! --Thursday, October 19th 2017, 1:50:55 pm
+I just deleted a tweet! Lets see if I still get an Invalid data error! --Thursday, October 19th 2017, 1:50:07 pm
+What's up with this invalid date? --Thursday, October 19th 2017, 1:41:37 pm
+This is more useless text! The quick brown fox, jumped over the lazy dog. --Wednesday, October 18th 2017, 6:13:20 pm
