@@ -2,7 +2,6 @@
     const getKeys = require('./keys.js');
     const fs = require('fs');
 
-
     const choice = process.argv[2];
     let input = "";
     const nodeArgs = process.argv;
@@ -69,10 +68,14 @@
                 artists.forEach(artist => {
                     artistArray.push(artist.name);
                 }, this);
-                //Clean this up sometime in the future
 
-                let output = `\nArtist(s): ${artistArray.join(', ')} \nSong Title: ${data.tracks.items[0].name}\nURL: ${data.tracks.items[0].album.external_urls.spotify}\nAlbum: ${data.tracks.items[0].album.name}\n`;
-                console.log(choice, output);
+                let joinedArray = artistArray.join(', ');
+                let output = '\nArtist(s): ' + joinedArray + '\n' +
+                    'Song Title: ' + data.tracks.items[0].name + '\n' +
+                    'URL: ' + data.tracks.items[0].album.external_urls.spotify + '\n' +
+                    'Album: ' + data.tracks.items[0].album.name;
+
+                console.log(output);
                 log(choice, output);
             }
 
@@ -89,14 +92,13 @@
         let imdbScore = "No Score";
 
         request(queryURL, (error, response, body) => {
-            // console.log(JSON.parse(body));
+
             let result = true;
             if (JSON.parse(body).Response === 'False') {
                 result = false;
             }
             if (typeof JSON.parse(body).Ratings[1] !== 'undefined') {
                 rottenScore = JSON.parse(body).Ratings[1].Value;
-                console.log(body);
             } else if (typeof JSON.parse(body).Ratings[0] !== 'undefined') {
                 imdbScore = JSON.parse(body).Ratings[0].Value;
             }
@@ -104,14 +106,14 @@
 
                 // Fix this monstrosity
                 /******************************8 */
-                let movie = `Title: ${JSON.parse(body).Title}
-Release Year: ${JSON.parse(body).Year}
-IMDB Rating: ${imdbScore}
-Rotten Tomatoes Rating: ${rottenScore}
-Production Country(s): ${JSON.parse(body).Country}
-Language: ${JSON.parse(body).Language}
-Plot: ${JSON.parse(body).Plot}
-"Actors: ${JSON.parse(body).Actors}\n`;
+                let movie = '\nTitle: ' + JSON.parse(body).Title +
+                    '\nRelease Year: ' + JSON.parse(body).Year + '\n' +
+                    'IMDB Rating: ' + imdbScore + '\n' +
+                    'Rotten Tomatoes Rating: ' + rottenScore + '\n' +
+                    'Production Country(s): ' + JSON.parse(body).Country + '\n' +
+                    'Language: ' + JSON.parse(body).Language + '\n' +
+                    'Plot: ' + JSON.parse(body).Plot + '\n' +
+                    'Actors: ' + JSON.parse(body).Actors;
 
                 console.log(movie);
                 log(choice, movie);
