@@ -60,18 +60,22 @@
         }, (err, data) => {
             if (err) {
                 return console.log('Error occurred: ' + err);
-            }
-            //Prints artists
-            const artists = data.tracks.items[0].album.artists;
-            let artistArray = [];
-            artists.forEach(artist => {
-                artistArray.push(artist.name);
-            }, this);
-            //Clean this up sometime in the future
+            } else if (data.tracks.next === null) {
+                console.log("Your search didn't return album information.");
+            } else {
+                //Prints artists
+                const artists = data.tracks.items[0].album.artists;
+                let artistArray = [];
+                artists.forEach(artist => {
+                    artistArray.push(artist.name);
+                }, this);
+                //Clean this up sometime in the future
 
-            let output = `\nArtist(s): ${artistArray.join(', ')} \nSong Title: ${data.tracks.items[0].name}\nURL: ${data.tracks.items[0].album.external_urls.spotify}\nAlbum: ${data.tracks.items[0].album.name}\n`;
-            console.log(choice, output);
-            log(choice, output);
+                let output = `\nArtist(s): ${artistArray.join(', ')} \nSong Title: ${data.tracks.items[0].name}\nURL: ${data.tracks.items[0].album.external_urls.spotify}\nAlbum: ${data.tracks.items[0].album.name}\n`;
+                console.log(choice, output);
+                log(choice, output);
+            }
+
 
         });
     };
@@ -85,16 +89,22 @@
         let imdbScore = "No Score";
 
         request(queryURL, (error, response, body) => {
-            if (!error && response.statusCode === 200) {
-                if (typeof JSON.parse(body).Ratings[1] !== 'undefined') {
-                    rottenScore = JSON.parse(body).Ratings[1].Value;
-                }
-                if (typeof JSON.parse(body).Ratings[0] !== 'undefined') {
-                    imdbScore = JSON.parse(body).Ratings[0].Value;
-                }
-                // Refactor this to one string
+            // console.log(JSON.parse(body));
+            let result = true;
+            if (JSON.parse(body).Response === 'False') {
+                result = false;
+            }
+            if (typeof JSON.parse(body).Ratings[1] !== 'undefined') {
+                rottenScore = JSON.parse(body).Ratings[1].Value;
+                console.log(body);
+            } else if (typeof JSON.parse(body).Ratings[0] !== 'undefined') {
+                imdbScore = JSON.parse(body).Ratings[0].Value;
+            }
+            if (!error && response.statusCode === 200 && result) {
+
+                // Fix this monstrosity
+                /******************************8 */
                 let movie = `Title: ${JSON.parse(body).Title}
-Release Year: ${JSON.parse(body).Year}
 Release Year: ${JSON.parse(body).Year}
 IMDB Rating: ${imdbScore}
 Rotten Tomatoes Rating: ${rottenScore}
@@ -165,7 +175,7 @@ Plot: ${JSON.parse(body).Plot}
             getText();
             break;
         default:
-            console.log("Invalid user input");
+            console.log("Please use command, 'movie-this', 'spotify-this-song' or 'my-tweets'");
             break;
     }
 })(); //IIFE
